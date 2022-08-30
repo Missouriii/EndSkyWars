@@ -247,8 +247,6 @@ class EventListener implements Listener{
 		if(count($dataB) <= 1){
 			$this->plugin->getDataBase()->setWeeklyQuest($player, implode("|", $weeklyQuests));
 		}
-		//send message when player join
-	    $event->setJoinMessage(TextFormat::GREEN."[+] ".TextFormat::GRAY.$player->getName());
 	}
 	
 	/**
