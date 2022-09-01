@@ -65,8 +65,8 @@ class RankedMode extends Entity{
 		$countInsane = SkyWars::getInstance()->getTotalCountPlayers("insane");
 		$total = $countNormal + $countInsane;
 		$this->setNameTag(
-		    TextFormat::BOLD.TextFormat::YELLOW."Skywars Ranked\n".
-			TextFormat::RESET."§8[§bSolo§r/§gDouble§8]\n"
+		    TextFormat::BOLD.TextFormat::YELLOW."Skywars Ranked \n".
+			TextFormat::RESET."§8[§bSolo§r/§gDouble§8]\n".
 			TextFormat::RESET."Click to play!\n".
 			TextFormat::BOLD.TextFormat::GREEN. number_format($total)." Players"
 		);
