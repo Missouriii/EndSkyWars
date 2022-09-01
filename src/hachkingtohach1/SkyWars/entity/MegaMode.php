@@ -65,7 +65,8 @@ class MegaMode extends Entity{
 		$countDouble = SkyWars::getInstance()->getCountDoubleArena("mega");
 		$total = $countNormal + $countDouble;
 		$this->setNameTag(
-		    TextFormat::BOLD.TextFormat::YELLOW."Skywars Mega §8[§bNormal§r/§gDouble§8]\n".
+		    TextFormat::BOLD.TextFormat::YELLOW."Skywars Mega\n".
+			TextFormat::RESET.TextFormat::RESET."§8[§bNormal§r/§gDouble§8]\n".
 			TextFormat::RESET.TextFormat::RESET."Click to play!\n".
 			TextFormat::BOLD.TextFormat::GREEN. number_format($total)." Players"
 		);
