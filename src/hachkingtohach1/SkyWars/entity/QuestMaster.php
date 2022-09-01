@@ -61,7 +61,7 @@ class QuestMaster extends Entity{
      */
     public function onUpdate(int $currentTick) :bool{
 		$this->setNameTag(
-		    TextFormat::BOLD.TextFormat::AQUA"Quest Master\n".
+		    TextFormat::BOLD.TextFormat::AQUA."Quest Master\n".
 			TextFormat::BOLD.TextFormat::RESET."Click Me!"
 		);
 		$this->setNameTagVisible(true);
