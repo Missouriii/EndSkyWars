@@ -75,7 +75,7 @@ class SoulWell extends Entity{
 	    }
 		$this->setScale(0.01);
 		$this->setImmobile(true);		
-		$this->setNameTag(TextFormat::AQUA."SoulWell\n".TextFormat::BOLD.TextFormat::YELLOW."RIGHT CLICK");
+		$this->setNameTag(TextFormat::BLUE.TextFormat::BOLD."SoulWell\n".TextFormat::BOLD.TextFormat::RESET."Click me!");
 		$this->setNameTagVisible(true);
         $this->setNameTagAlwaysVisible(true);	
         $this->motion->x = 0;
