@@ -65,8 +65,8 @@ class LaboratoryMode extends Entity{
 		$countDouble = SkyWars::getInstance()->getCountDoubleArena("laboratory");
 		$total = $countSolo + $countDouble;
 		$this->setNameTag(
-		    TextFormat::BOLD.TextFormat::YELLOW."CLICK TO PLAY\n".
-			TextFormat::RESET.TextFormat::GRAY."Laboratory Mode [Solo/Double]\n".
+		    TextFormat::BOLD.TextFormat::YELLOW."Skywars Laboratory §8[§bNormal§r/§gInsane§8]\n".
+			TextFormat::RESET.TextFormat::RESET."Click to play!\n".
 			TextFormat::BOLD.TextFormat::GREEN. number_format($total)." Players"
 		);
 		$this->setNameTagVisible(true);
