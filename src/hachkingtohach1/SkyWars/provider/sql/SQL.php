@@ -50,7 +50,7 @@ class SQL implements DataBase{
 			$config["User"] ?? "u18613_YiPeb6rKcd",
 			$config["Password"] ?? "cRbJLu.2riWAq!@DH3iubQKK",
 			$config["Database"] ?? "s18613_main",
-			$config["Port"] ?? 3306
+			$config["Port"] ?? "3306"
 		);		
 		if($this->db->connect_error){
 			$this->plugin->getLogger()->critical("Could not connect to MySQL server: ".$this->db->connect_error);
