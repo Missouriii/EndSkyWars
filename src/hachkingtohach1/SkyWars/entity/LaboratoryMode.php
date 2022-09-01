@@ -61,7 +61,7 @@ class LaboratoryMode extends Entity{
      * @return bool
      */
     public function onUpdate(int $currentTick) :bool{
-		$countNormal = SkyWars::getInstance()->getTotalCountLaboratoryPlayers();
+		$countNormal = SkyWars::getInstance()->getTotalCountPlayers("laboratory");
 		$countDouble = SkyWars::getInstance()->getCountDoubleArena("laboratory");
 		$total = $countNormal + $countDouble;
 		$this->setNameTag(
@@ -91,7 +91,7 @@ class LaboratoryMode extends Entity{
      * @return CompoundTag
      */
     public function saveNBT() :CompoundTag{
-		$nbt = parent::saveNBT();
+		$nbt = parent::saveNBT(); 
 		return $nbt;
 	}
 
