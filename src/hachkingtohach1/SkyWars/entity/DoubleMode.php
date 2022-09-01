@@ -65,8 +65,8 @@ class DoubleMode extends Entity{
 		$countInsane = SkyWars::getInstance()->getCountDoubleArena("insane");
 		$total = $countNormal + $countInsane;
 		$this->setNameTag(
-		    TextFormat::BOLD.TextFormat::YELLOW."CLICK TO PLAY\n".
-			TextFormat::RESET.TextFormat::GRAY."Double Mode [Normal/Insane]\n".
+		    TextFormat::BOLD.TextFormat::YELLOW."Skywars Doubles §8[§bNormal§r/§gInsane§8]\n".
+			TextFormat::RESET.TextFormat::RESET."Click to play!\n".
 			TextFormat::BOLD.TextFormat::GREEN. number_format($total)." Players"
 		);
 		$this->setNameTagVisible(true);
