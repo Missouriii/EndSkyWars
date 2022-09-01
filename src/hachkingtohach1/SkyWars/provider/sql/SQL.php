@@ -46,10 +46,10 @@ class SQL implements DataBase{
         $this->dbName = $dbName;
         $config = $this->plugin->getConfig()->getNested("SkyWars-SQL");
         $this->db = new mysqli(
-			$config["Host"] ?? "gamesdal1.bisecthosting.com",
-			$config["User"] ?? "u18613_YiPeb6rKcd",
-			$config["Password"] ?? "dqAUaJNWNy@=1yzLvwY20f!k",
-			$config["Database"] ?? "s18613_main",
+			$config["Host"] ?? "",
+			$config["User"] ?? "",
+			$config["Password"] ?? "",
+			$config["Database"] ?? "",
 			$config["Port"] ?? 3306
 		);		
 		if($this->db->connect_error){
