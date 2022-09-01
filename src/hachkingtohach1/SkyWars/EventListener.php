@@ -45,6 +45,7 @@ use pocketmine\event\inventory\InventoryOpenEvent;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\block\inventory\ChestInventory;
+use pocketmine\world\sound\XpLevelUpSound;
 use pocketmine\block\Chest;
 use pocketmine\block\BlockLegacyIds;
 use pocketmine\block\BlockFactory;
@@ -54,12 +55,12 @@ use pocketmine\entity\projectile\EnderPearl;
 use pocketmine\entity\effect\EffectInstance;
 use pocketmine\entity\effect\StringToEffectParser;
 use pocketmine\world\sound\AnvilFallSound;
-use pocketmine\world\sound\XpLevelUpSound;
 use pocketmine\world\sound\BlockBreakSound;
 use pocketmine\world\sound\ExplodeSound;
 use pocketmine\world\sound\BlazeShootSound;
 use pocketmine\world\particle\BlockBreakParticle;
 use pocketmine\world\particle\HugeExplodeParticle;
+use pocketmine\event\player\PlayerCommandPreprocessEvent;
 use hachkingtohach1\SkyWars\player\SWPlayer;
 use hachkingtohach1\SkyWars\math\Vector3;
 use hachkingtohach1\SkyWars\utils\Lightning;
@@ -184,9 +185,13 @@ class EventListener implements Listener{
 								$dataArenaAttacker->updateAssistsCounter($attacker);
 								//update coins, souls, xp for attacker
 				                $randomCoins = rand(100, 150);
+						$currentLevel = Ranking::getLevel();
+				                $nextLevel = Ranking::getLevel($player) + 1;
 				                Economy::addCoins($subject, $randomCoins);
 				                Economy::addSouls($subject, 1);
 								SkyWars::getInstance()->getDataBase()->addLevels($subject, 1);
+							        $subject->sendMessage("§l§6» §bLEVEL UP! §r§bYou are now §4Sky§cWars §blevel §e{$nextLevel}§b!");
+							$subject->getWorld()->addSound($subject->getLocation()->asVector3(), new XpLevelUpSound(10), [$subject]);
 								//update quests
 								Quest::checkQuestPlayer($subject, $dataArenaAttacker->getMaxInTeamCount(), "kill");								
 								$subject->sendTip(TextFormat::GOLD."+".$randomCoins." coins, ".TextFormat::LIGHT_PURPLE."+1 XP, ".TextFormat::AQUA." +1 souls");
@@ -200,10 +205,14 @@ class EventListener implements Listener{
                 $dataArenaAttacker->updateKillsCounter($attacker);				
 				//update coins, souls, xp for attacker
 				$randomCoins = rand(100, 150);
+				$currentLevel = Ranking::getLevel();
+				$nextLevel = Ranking::getLevel($player) + 1;
 				Economy::addCoins($attacker, $randomCoins);
 				Economy::addSouls($attacker, 1);
 				Ranking::addXp($attacker, 2);
 				SkyWars::getInstance()->getDataBase()->addLevels($attacker, 1);
+				$attacker->sendMessage("§l§6» §bLEVEL UP! §r§bYou are now §4Sky§cWars §blevel §e{$nextLevel}§b!");
+				$attacker->getWorld()->addSound($attacker->getLocation()->asVector3(), new XpLevelUpSound(10), [$attacker]);
 				//update quests
 				Quest::checkQuestPlayer($attacker, $dataArenaAttacker->getMaxInTeamCount(), "kill");
 				$attacker->sendTip(TextFormat::GOLD."+".$randomCoins." coins, ".TextFormat::LIGHT_PURPLE."+1 XP, ".TextFormat::AQUA." +1 souls");
@@ -213,10 +222,14 @@ class EventListener implements Listener{
 			    $dataArenaAttacker->updateKillsCounter($attacker);
 				//update coins, souls, xp for attacker
 				$randomCoins = rand(100, 150);
+				$currentLevel = Ranking::getLevel();
+				$nextLevel = Ranking::getLevel($player) + 1;
 				Economy::addCoins($attacker, $randomCoins);
 				Economy::addSouls($attacker, 1);
 				Ranking::addXp($attacker, 2);
 				SkyWars::getInstance()->getDataBase()->addLevels($attacker, 1);
+				$attacker->sendMessage("§l§6» §bLEVEL UP! §r§bYou are now §4Sky§cWars §blevel §e{$nextLevel}§b!");
+				$attacker->getWorld()->addSound($attacker->getLocation()->asVector3(), new XpLevelUpSound(10), [$attacker]);
 				//update quests
 				Quest::checkQuestPlayer($attacker, $dataArenaAttacker->getMaxInTeamCount(), "kill");
 				$attacker->sendTip(TextFormat::GOLD."+".$randomCoins." coins, ".TextFormat::LIGHT_PURPLE."+1 XP, ".TextFormat::AQUA." +1 souls");
@@ -249,8 +262,9 @@ class EventListener implements Listener{
 		if(count($dataB) <= 1){
 			$this->plugin->getDataBase()->setWeeklyQuest($player, implode("|", $weeklyQuests));
 		}
-		//send message when player join
-	    $event->setJoinMessage(TextFormat::GREEN."[+] ".TextFormat::GRAY.$player->getName());
+		if($this->plugin->getConfig()->get("Clear-Xp") == true){
+                    Ranking::setXp($player, 0);
+                }
 	}
 	
 	/**
@@ -274,6 +288,27 @@ class EventListener implements Listener{
 		//remove death message from pocketmine
 		$event->setQuitMessage("");
 	}
+	
+    /**
+     * @param PlayerCommandPreprocessEvent $event
+     */
+    public function onCommandPreprocess(PlayerCommandPreprocessEvent $event)
+    {
+        $msg = $event->getMessage();
+        $player = $event->getPlayer();
+	$dataPlayer = $this->getDataPlayer($player);
+
+        $inGame = $dataPlayer->isInGame();
+
+        if (!$inGame) return;
+
+        $cmd = explode(" ", $msg)[0];
+
+        if (in_array($cmd, $this->plugin->getConfig()->get("Banned-Commands"))) {
+            $player->sendMessage($this->plugin->getConfig()->get("Banned-Command-Message"));
+            $event->cancel();
+        }
+    }
 	
 	/**
 	 * Calls when player cause damage
