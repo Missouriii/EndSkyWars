@@ -820,7 +820,7 @@ class Arenas{
 		}
 		$winners = implode(",", $winners);
 		$this->broadcastMessage("§l§a▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃▃");
-		$this->broadcastMessage("§l§f      SkyWars         ");
+		$this->broadcastMessage("§l§f          §4Sky§cWars         ");
 		$this->broadcastMessage("§l§a");
 		if($this->isTeamMode()){
 		    $this->broadcastMessageLocalized("WINNERS_FORMAT", ["#players"], [$winners]);
