@@ -48,7 +48,7 @@ class SQL implements DataBase{
         $this->db = new mysqli(
 			$config["Host"] ?? "gamesdal1.bisecthosting.com",
 			$config["User"] ?? "u18613_YiPeb6rKcd",
-			$config["Password"] ?? "cRbJLu.2riWAq!@DH3iubQKK",
+			$config["Password"] ?? "dqAUaJNWNy@=1yzLvwY20f!k",
 			$config["Database"] ?? "s18613_main",
 			$config["Port"] ?? 3306
 		);		
