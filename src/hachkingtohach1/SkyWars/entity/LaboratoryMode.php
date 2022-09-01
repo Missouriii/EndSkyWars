@@ -61,11 +61,12 @@ class LaboratoryMode extends Entity{
      * @return bool
      */
     public function onUpdate(int $currentTick) :bool{
-		$countSolo = SkyWars::getInstance()->getTotalCountPlayers("laboratory");
+		$countNormal = SkyWars::getInstance()->getTotalCountLaboratoryPlayers();
 		$countDouble = SkyWars::getInstance()->getCountDoubleArena("laboratory");
-		$total = $countSolo + $countDouble;
+		$total = $countNormal + $countDouble;
 		$this->setNameTag(
-		    TextFormat::BOLD.TextFormat::YELLOW."Skywars Laboratory §8[§bNormal§r/§gInsane§8]\n".
+		    TextFormat::BOLD.TextFormat::YELLOW."Skywars Laboratory\n".
+			TextFormat::RESET.TextFormat::RESET."§8[§bSolo§r/§gDouble§8]\n".
 			TextFormat::RESET.TextFormat::RESET."Click to play!\n".
 			TextFormat::BOLD.TextFormat::GREEN. number_format($total)." Players"
 		);
