@@ -65,7 +65,8 @@ class SoloMode extends Entity{
 		$countInsane = SkyWars::getInstance()->getTotalCountPlayers("insane");
 		$total = $countNormal + $countInsane;
 		$this->setNameTag(
-		    TextFormat::BOLD.TextFormat::YELLOW."Skywars Solo §8[§bNormal§r/§gInsane§8]\n".
+		    TextFormat::BOLD.TextFormat::YELLOW."Skywars Solo \n".
+			TextFormat::RESET.TextFormat::RESET."§8[§bNormal§r/§gInsane§8]\n"
 			TextFormat::RESET.TextFormat::RESET."Click to play!\n".
 			TextFormat::BOLD.TextFormat::GREEN. number_format($total)." Players"
 		);
