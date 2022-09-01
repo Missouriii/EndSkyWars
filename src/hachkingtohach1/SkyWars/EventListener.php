@@ -185,8 +185,8 @@ class EventListener implements Listener{
 								$dataArenaAttacker->updateAssistsCounter($attacker);
 								//update coins, souls, xp for attacker
 				                $randomCoins = rand(100, 150);
-						$currentLevel = Ranking::getLevel();
-				                $nextLevel = Ranking::getLevel($player) + 1;
+						$currentLevel = Ranking::getLevel($subject);
+				                $nextLevel = Ranking::getLevel($subject) + 1;
 				                Economy::addCoins($subject, $randomCoins);
 				                Economy::addSouls($subject, 1);
 								SkyWars::getInstance()->getDataBase()->addLevels($subject, 1);
@@ -205,8 +205,8 @@ class EventListener implements Listener{
                 $dataArenaAttacker->updateKillsCounter($attacker);				
 				//update coins, souls, xp for attacker
 				$randomCoins = rand(100, 150);
-				$currentLevel = Ranking::getLevel();
-				$nextLevel = Ranking::getLevel($player) + 1;
+				$currentLevel = Ranking::getLevel($attacker);
+				$nextLevel = Ranking::getLevel($attacker) + 1;
 				Economy::addCoins($attacker, $randomCoins);
 				Economy::addSouls($attacker, 1);
 				Ranking::addXp($attacker, 2);
@@ -222,8 +222,8 @@ class EventListener implements Listener{
 			    $dataArenaAttacker->updateKillsCounter($attacker);
 				//update coins, souls, xp for attacker
 				$randomCoins = rand(100, 150);
-				$currentLevel = Ranking::getLevel();
-				$nextLevel = Ranking::getLevel($player) + 1;
+				$currentLevel = Ranking::getLevel($attacker);
+				$nextLevel = Ranking::getLevel($attacker) + 1;
 				Economy::addCoins($attacker, $randomCoins);
 				Economy::addSouls($attacker, 1);
 				Ranking::addXp($attacker, 2);
