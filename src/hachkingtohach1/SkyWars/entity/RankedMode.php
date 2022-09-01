@@ -66,8 +66,8 @@ class RankedMode extends Entity{
 		$total = $countNormal + $countInsane;
 		$this->setNameTag(
 		    TextFormat::BOLD.TextFormat::YELLOW."Skywars Ranked\n".
-			TextFormat::RESET.TextFormat::RESET."§8[§bSolo§r/§gDouble§8]\n"
-			TextFormat::RESET.TextFormat::RESET."Click to play!\n".
+			TextFormat::RESET."§8[§bSolo§r/§gDouble§8]\n"
+			TextFormat::RESET."Click to play!\n".
 			TextFormat::BOLD.TextFormat::GREEN. number_format($total)." Players"
 		);
 		$this->setNameTagVisible(true);
