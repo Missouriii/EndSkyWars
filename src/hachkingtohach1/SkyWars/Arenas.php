@@ -1501,7 +1501,7 @@ class Arenas{
 				ScoreBoardAPI::setScoreLine($spectator, 9, TextFormat::GREEN."");
 		        ScoreBoardAPI::setScoreLine($spectator, 10, TextFormat::WHITE."Map: ".TextFormat::GREEN.$this->getNameMap());
 				if($this->getMode() == self::MODE_LABORATORY){
-					ScoreBoardAPI::setScoreLine($player, 11, TextFormat::LIGHT_PURPLE."Lab: ".$this->specialMode[1].$this->specialMode[0]);
+					ScoreBoardAPI::setScoreLine($player, 11, TextFormat::WHITE."Lab: ".$this->specialMode[1].$this->specialMode[0]);
 				}else{			
 					ScoreBoardAPI::setScoreLine($player, 11, TextFormat::WHITE."Mode: ".$this->colorMode($this->getMode()). ucfirst($this->getMode()));
 				}
