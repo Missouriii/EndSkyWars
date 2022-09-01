@@ -66,7 +66,7 @@ class MegaMode extends Entity{
 		$total = $countNormal + $countDouble;
 		$this->setNameTag(
 		    TextFormat::BOLD.TextFormat::YELLOW."Skywars Mega §8[§bNormal§r/§gDouble§8]\n".
-			TextFormat::RESET.TextFormat::REST."Click to play!\n".
+			TextFormat::RESET.TextFormat::RESET."Click to play!\n".
 			TextFormat::BOLD.TextFormat::GREEN. number_format($total)." Players"
 		);
 		$this->setNameTagVisible(true);
