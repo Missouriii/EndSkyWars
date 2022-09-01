@@ -65,7 +65,7 @@ class SoulWellTick extends Task{
 			];
 			return true;
 		}else{
-			$player->sendMessage(TextFormat::RED."You are in-queue!");
+			$player->sendMessage(TextFormat::RED."§l§6» §r§cYou are in-queue!");
 		}
 		return false;
 	}
